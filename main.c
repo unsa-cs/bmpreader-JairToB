@@ -23,10 +23,12 @@ int main(int argc, char *argv[]) {
   //if (!image) return 1;
 
   // Inicializar GLUT
-  argc = 2; // Necesario para evitar problemas con glutInit
-  argv[2] = "Lenna.bmp"; // Argumento vacío para GLUT
+  argc = 3; // Necesario para evitar problemas con glutInit
+  argv[1] = "Lenna.bmp"; // Argumento vacío para GLUT
+  argv[2] = "B&W";
+  image = readBMP(argv[1]);
+  drawBMP(image);
   
-  image = readBMP(argv[2]);
   if (!image) return 1;
   glutInit(&argc, argv);
 
