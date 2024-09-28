@@ -1,4 +1,5 @@
 #include "bmp.h"
+#include <GL/gl.h>
 #include <GL/glut.h>
 
 BMPImage* readBMP(const char *filename) {
@@ -30,3 +31,5 @@ void freeBMP(BMPImage *image) {
 void drawBMP(BMPImage *image) {
   glDrawPixels(image->width, image->height, GL_BGR, GL_UNSIGNED_BYTE, image->data);
 }
+
+
