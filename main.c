@@ -12,6 +12,11 @@ void display() {
   glFlush();
 }
 
+
+void drawBMPblacknWhite(BMPImage *image){
+  glDrawPixels(image->width, image->height, GL_LUMINANCE, GL_UNSIGNED_BYTE, image->data);
+}
+
 int main(int argc, char *argv[]) {
   //char filename[] = "Lenna.bmp";
 
@@ -27,7 +32,10 @@ int main(int argc, char *argv[]) {
   argv[1] = "Lenna.bmp"; // Argumento vacío para GLUT
   argv[2] = "B&W";
   image = readBMP(argv[1]);
-  drawBMP(image);
+  if(argv[2]){
+    drawBMPblacknWhite(image);
+    image = readBMP(argv[1]);
+  }
   
   if (!image) return 1;
   glutInit(&argc, argv);
